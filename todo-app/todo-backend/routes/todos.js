@@ -61,3 +61,4 @@ singleRouter.put("/", async (req, res) => {
 router.use("/:id", findByIdMiddleware, singleRouter)
 
 module.exports = router
+

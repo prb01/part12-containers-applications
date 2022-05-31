@@ -1,8 +1,17 @@
-version: '3.8'            # Version 3.8 is quite new and should work
-
 services:
-  app:                    # The name of the service, can be anything
-    image: todo-backend # Declares which image to use
-    build: .              # Declares where to build if image is not found
-    ports:                # Declares the ports to publish
-      - 3000:3000
+  server:
+    image: todo-back-dev
+    build:
+      context: . # The context will pick this directory as the "build context"
+      dockerfile: dev.Dockerfile # This will simply tell which dockerfile to read
+    volumes:
+      - ./:/usr/src/app # The path can be relative, so ./ is enough to say "the same location as the docker-compose.yml"
+    ports:
+      - 3001:3001
+    container_name: todo-back-dev # This will name the container hello-front-dev
+    environment: 
+      - REDIS_URL=http://server:6379
+      - MONGO_URL=http://the_username:the_password@server:3456/the_database
+
+
+      

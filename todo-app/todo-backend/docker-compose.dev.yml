@@ -30,7 +30,7 @@ services:
       - 3001:3001
     container_name: todo-back-dev # This will name the container hello-front-dev
     environment: 
-      - REDIS_URL=redis://redis:6379
+      - REDIS_URL=redis://app:6379
       - MONGO_URL=mongodb://the_username:the_password@mongo:27017/the_database
     depends_on:
       - mongo
